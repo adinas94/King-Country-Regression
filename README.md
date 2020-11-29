@@ -1,7 +1,7 @@
 # King County Housing Market: Regression Analysis
 A Project for Flatiron School
 
-![Seattle](https://...)
+![Seattle](images/seattle.jpeg)
 
 ### Business Case
 
@@ -23,7 +23,7 @@ Our cliend supplied a data set containing information about 21,000+ house sales 
 
 Here's a detaild explanation of each of the features of our dataset [(source)](https://www.slideshare.net/PawanShivhare1/predicting-king-county-house-prices): 
 
-![Column details](https://...)
+![Column details](images/headers-explained.png)
 
 ### Data Cleanup and EDA
 
@@ -42,11 +42,11 @@ Next, we procceded with our exploration which focused on:
 Lastly, before we built our baseline mode, we made sure to check the regression assumptions for linearity and multicollinearity. 
 With the help of a heatmap and some VIF scores, we dropped features that appeared to to violate the multicollinearity assumption. 
 
-![features heatmap](https://...)
+![features heatmap](images/heatmap.png)
 
 ### Baseline Model and the Iterations that followed
 
-![baseline summary](https://...)
+![baseline summary](images/baseline_model.png)
 
 Our baseline model uses ten predictors: bedrooms, bathroom, sqft living, sqft lot, floors, waterfront, view, condition, yr_renovated, zipcode, condition and renovated. The first version of the model yielded a pretty inaccurate estimation of price, with an R-squared of 0.269. Looking at the coefficients, we noticed that the sqft of houses was among the most significant predictors. Also, the most significant impact on price (among our categorical features) from one category to another was zip codes. In addition to its insufficient predictive abilities, our model had probable heteroscedasticity and its residuals weren't as normally distribued as we would've liked.
 
@@ -63,9 +63,9 @@ In addiiton, we also dropped "yr_renovated" as predictor due to its high p-value
 
 #### Third Iteration - Model 3
 
-We did some additional data transformations to improve the model and hopefully take care of our heteroscedasticity problem (we hoped that improving the distribution of more skewed variables could just do the trick). We log-transformed our continuous variables (price, sqft_living, and sqft_lot) which led to their distributions looking more normal:
+We did some additional data transformations to improve the model and hopefully take care of our heteroscedasticity problem (we hoped that improving the distribution of more skewed variables could just do the trick). We log-transformed our continuous variables (price, sqft_living, and sqft_lot) which led to their distributions looking more normal.
  
- ![log distributions](https://...)
+  ![model3 assumptions](images/model_4_assumptions.png)
  
  **THE RESULT:** We saw very slim improvement in our R-squared (0.607 --> .609). The distribution of residuals looked even better and more normal than in the previous two versions of the model. We are almost at 0 for the mean of our residuals. 
 
@@ -78,6 +78,8 @@ Since our client is interested in identifying the most profitable areas to build
 **THE RESULT:** Our R-squared went up again (0.687): it now explains about 68.7% of our data variance. We have a few p-values over our 0.05 threshhold, which we dropped before the next iteration. The coefficients for cities, compared to the baseline Seattle, made sense. For example, prices in Black Diamond, Bellevue and Mercer Island go up compared to Seattle.
 
 
+
+
 ### THE FINAL MODEL 
 
 In our fifth and last iteration, we explored what interactions between our features could improve our model. The two that appeared to be most beneficial were between **sqft_living and floors** and between **sqft_living and bathrooms**. This step increased our R-Squared to 0.699.
@@ -86,7 +88,8 @@ Our model is able to predict housing price with approximately 70% accuracy
 
 Our model satisfies the linear assumptions of a regression model: residuals are normally distributed, features are not correlated with one another and the residuals follow homoscedasticity.
 
- ![final summary](https://...)
+ ![final summary-1](images/final-summary-1.png)
+ ![final summary-2](images/final-summary-2.png)
  
  ### BUSINESS RECOMMENDATIONS:
  
@@ -96,7 +99,6 @@ Our model satisfies the linear assumptions of a regression model: residuals are 
 
  
  
-
 
 
 
