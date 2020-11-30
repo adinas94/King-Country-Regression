@@ -13,38 +13,38 @@ Our exploration and analysis were guided by the following questions:
 
 * What features should these properties have to sell at high prices and yield the company high profits?
 
-By the end of our analysis, we hope to provide recomemndations on which area our client should build in, as well as which types of homes will yield them the highest profits.
+By the end of our analysis, we hope to provide recommendations on which area our client should build in, as well as which types of homes will yield them the highest profits.
 
 ### The Data
 
 [Link to dataset on Kaggle](https://www.kaggle.com/harlfoxem/housesalesprediction)
 
-Our cliend supplied a data set containing information about 21,000+ house sales in the region, which offered great insight into the King County housing market. 
+Our cliend supplied a data set containing information on about 21,000+ house sales in the region, which offered great insight into the King County housing market. 
 
-Here's a detaild explanation of each of the features of our dataset [(source)](https://www.slideshare.net/PawanShivhare1/predicting-king-county-house-prices): 
+Here's a detailed explanation of each of the features of our dataset [(source)](https://www.slideshare.net/PawanShivhare1/predicting-king-county-house-prices): 
 
 ![Column details](images/headers-explained.png)
 
 ### Data Cleanup and EDA
 
-As with most datasets, this one required some cleaning. Some of the highlights of our data prepartion process included:
+As with most datasets, this one required some cleaning. Some of the highlights of our data preparation process included:
 
 * We **replaced null values** for features where over 3/4 of the existing values were 0 with zeros (e.g. waterfront, view)
-* We **removed all duplicates** which included houses that were sold mulitple times and retained the most recent record. 
+* We **removed all duplicates** which included houses that were sold multiple times and retained the most recent record. 
 * We **ensured that values in all columns are of numeric types** so they can work in a regression model 
 
-Next, we procceded with our exploration which focused on:
+Next, we proceeded with our exploration which focused on:
 
 * identifying and removing outliers
 * checking the correlation between variables 
 * conducting several t-tests between features that appear to be highly correlated with our target **price**
 
-Lastly, before we built our baseline mode, we made sure to check the regression assumptions for linearity and multicollinearity. 
-With the help of a heatmap and some VIF scores, we dropped features that appeared to to violate the multicollinearity assumption. 
+Lastly, before we built our baseline model, we made sure to check the regression assumptions for linearity and multicollinearity. 
+With the help of a heatmap and some VIF scores, we dropped features that appeared to violate the multicollinearity assumption. 
 
 ![features heatmap](images/heatmap.png)
 
-### Baseline Model and the Iterations that followed
+### Baseline Model and the Iterations that Followed
 
 ![baseline summary](images/baseline_model.png)
 
@@ -57,7 +57,7 @@ To improve on our baseline, we engineered two additional features that quantifie
  * **population density** for each zip code. We assume that zip codes with higher population density are more desirable and prices are higher than in zip codes with lower density.
  * **median household income** for each zip code. Household finance experts assert that buyers can afford to pay up to three times their annual incomes for a home.
 
-In addiiton, we also dropped "yr_renovated" as predictor due to its high p-value. 
+In addiiton, we also dropped "yr_renovated" as a predictor due to its high p-value. 
 
 **THE RESULT:** Our R-squared doubled. The distribution of residuals looked way more normal, however heteroscedasticity persisted. 
 
@@ -67,12 +67,12 @@ We did some additional data transformations to improve the model and hopefully t
  
   ![model3 assumptions](images/model_4_assumptions.png)
  
- **THE RESULT:** We saw very slim improvement in our R-squared (0.607 --> .609). The distribution of residuals looked even better and more normal than in the previous two versions of the model. We are almost at 0 for the mean of our residuals. 
+ **THE RESULT:** We saw very slim improvement in our R-squared (0.607 --> 0.609). The distribution of residuals looked even better and more normal than in the previous two versions of the model. We are almost at 0 for the mean of our residuals. 
 
 
 #### Fourth Iteration - Model 4
 
-Since our client is interested in identifying the most profitable areas to build in, we wanted to express zip code as a more meaningful variable. We replace it with the name of the city. Since our regression model doesn't work with string values for our categorical variables, we turned the county's 13 cities into dummies. To avoid the dummy trap, we decided it's best to drop Seattle, which makes the most sense as a baseline for coefficient interpretation.
+Since our client is interested in identifying the most profitable areas to build in, we wanted to express zip code as a more meaningful variable. We replace it with the name of the city. Since our regression model doesn't work with string values for our categorical variables, we turned the county's 13 cities into dummies. To avoid the dummy variable trap, we decided it's best to drop Seattle, which makes the most sense as a baseline for coefficient interpretation.
 
 
 **THE RESULT:** Our R-squared went up again (0.687): it now explains about 68.7% of our data variance. We have a few p-values over our 0.05 threshhold, which we dropped before the next iteration. The coefficients for cities, compared to the baseline Seattle, made sense. For example, prices in Black Diamond, Bellevue and Mercer Island go up compared to Seattle.
@@ -93,7 +93,7 @@ Our model satisfies the linear assumptions of a regression model: residuals are 
  
  ### BUSINESS RECOMMENDATIONS:
  
-* The following areas are positively related to price: Bellevue, Bothell, Fall City, Issaquah, Kirkland, Mercer Island, North Bend, Redmond and Vashon. We recommend the housing development company builds in one of these areas.  
+* The following areas are positively related to price: Bellevue, Bothell, Fall City, Issaquah, Kirkland, Mercer Island, North Bend, Redmond and Vashon. We recommend the housing development company builds in one or more of these areas.  
 
 * Certain features of homes will also positively impact their price: a nice view of the property, good condition of the homes, and a high square footage of the home's living space, especially for homes with a larger number of floors and bathrooms.
 
