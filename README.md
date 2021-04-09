@@ -98,9 +98,7 @@ Our model satisfies the linear assumptions of a regression model: residuals are 
 * Certain features of homes will also positively impact their price: a nice view of the property, good condition of the homes, and a high square footage of the home's living space, especially for homes with a larger number of floors and bathrooms.
 
   ### BLOG POST:
-  The link below will bring you to my blog post that discusses the interpretation of a linear regression model which is based off this project's work: 
- https://adinasteinman.medium.com/analyzing-a-linear-regression-result-d98c4090f6af
-
+  This [link](https://adinasteinman.medium.com/analyzing-a-linear-regression-result-d98c4090f6af) will bring you to my blog post that discusses the interpretation of a linear regression model which is based off this project's work.
 
 
  
