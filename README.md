@@ -19,7 +19,7 @@ By the end of our analysis, we hope to provide recommendations on which area our
 
 [Link to dataset on Kaggle](https://www.kaggle.com/harlfoxem/housesalesprediction)
 
-Our cliend supplied a data set containing information on about 21,000+ house sales in the region, which offered great insight into the King County housing market. 
+Our client supplied a data set containing information on about 21,000+ house sales in the region, which offered great insight into the King County housing market. 
 
 Here's a detailed explanation of each of the features of our dataset [(source)](https://www.slideshare.net/PawanShivhare1/predicting-king-county-house-prices): 
 
